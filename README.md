@@ -1,6 +1,6 @@
 # Water
 
-A new Flutter project.
+A new Flutter project , it remainds you of drinking water according to your body with few added functionalities. It uses no internet connection to work.
 
 # Screenshots
 
