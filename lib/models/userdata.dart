@@ -16,6 +16,9 @@ class UserData extends ChangeNotifier {
   double weight;
   int ageCategory;
   double millilitre;
+  double get body_weight {
+    return weight;
+  }
 
   Future initializeData() async {
     await getApplicationDocumentsDirectory().then((Directory directory) async {

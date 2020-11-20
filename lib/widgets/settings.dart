@@ -1,6 +1,7 @@
 import 'package:Water/models/userdata.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -9,6 +10,19 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   TextEditingController quantity = new TextEditingController();
+  UserData newUserData = new UserData();
+  TutorialCoachMark tutorialCoachMark;
+  List<TargetFocus> targets = List();
+
+  GlobalKey keyButton1 = GlobalKey();
+  GlobalKey keyButton2 = GlobalKey();
+  GlobalKey keyButton3 = GlobalKey();
+  @override
+  initState() {
+    initTargets();
+    WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +66,7 @@ class _SettingsState extends State<Settings> {
         padding: EdgeInsets.all(10),
         children: <Widget>[
           Card(
+            key: keyButton1,
             elevation: 5,
             child: Padding(
               padding: const EdgeInsets.only(
@@ -92,6 +107,7 @@ class _SettingsState extends State<Settings> {
             ),
           ),
           Card(
+            key: keyButton2,
             elevation: 5,
             child: Padding(
               padding: EdgeInsets.all(10),
@@ -124,6 +140,7 @@ class _SettingsState extends State<Settings> {
             ),
           ),
           Card(
+            key: keyButton3,
             elevation: 5,
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -249,5 +266,132 @@ class _SettingsState extends State<Settings> {
         });
       },
     );
+  }
+
+  void initTargets() {
+    targets.add(
+      TargetFocus(
+        identify: "Target 0",
+        keyTarget: keyButton1,
+        shape: ShapeLightFocus.RRect,
+        contents: [
+          ContentTarget(
+              align: AlignContent.bottom,
+              child: Container(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "1. Edit Your Details",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 20.0),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Text(
+                        "Add your weight and age category so we can personalize the water quantity per day. This will reflect the total water quantity you should consume per day",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
+                  ],
+                ),
+              ))
+        ],
+      ),
+    );
+    targets.add(
+      TargetFocus(
+        identify: "Target 1",
+        keyTarget: keyButton2,
+        shape: ShapeLightFocus.RRect,
+        contents: [
+          ContentTarget(
+              align: AlignContent.bottom,
+              child: Container(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "2. Add New Cup Quantity",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 20.0),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Text(
+                        "This is quantity of cup that you would use to drink , A max of 6 cups can be used to drink water",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
+                  ],
+                ),
+              ))
+        ],
+      ),
+    );
+    targets.add(
+      TargetFocus(
+        identify: "Target 2",
+        keyTarget: keyButton3,
+        shape: ShapeLightFocus.RRect,
+        contents: [
+          ContentTarget(
+              align: AlignContent.top,
+              child: Container(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "3 .Select Cup",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 20.0),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Text(
+                        "Selecting cup reflects the cup quantity in home page , that you would use to drink water at a time.",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
+                  ],
+                ),
+              ))
+        ],
+      ),
+    );
+  }
+
+  void showTutorial() {
+    bool isValid = newUserData.body_weight > 0 ? false : true;
+    if (isValid) {
+      tutorialCoachMark = TutorialCoachMark(context,
+          targets: targets,
+          colorShadow: Colors.red,
+          textSkip: "SKIP",
+          paddingFocus: 10,
+          opacityShadow: 0.8, onFinish: () {
+        print("finish");
+      }, onClickTarget: (target) {
+        print(target);
+      }, onClickSkip: () {
+        print("skip");
+      })
+        ..show();
+    }
+  }
+
+  void _afterLayout(_) {
+    Future.delayed(Duration(milliseconds: 100), () {
+      showTutorial();
+    });
   }
 }

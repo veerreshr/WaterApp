@@ -39,7 +39,9 @@ class notificationCard extends StatelessWidget {
                     duration: const Duration(seconds: 2),
                     backgroundColor: Colors.redAccent,
                   );
-                  Scaffold.of(context).showSnackBar(mySnackBar);
+                  Scaffold.of(context)
+                    ..removeCurrentSnackBar()
+                    ..showSnackBar(mySnackBar);
                 },
                 icon: Icon(
                   Icons.delete,
