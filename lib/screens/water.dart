@@ -4,6 +4,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:Water/widgets/drink.dart';
 import 'package:Water/widgets/remainder.dart';
 import 'package:Water/widgets/stats.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/settings.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
@@ -115,7 +116,7 @@ class _WaterState extends State<Water> {
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Text(
-                        "Add your weight and age category so we can personalize the water quantity per day. Also select the cup quantity",
+                        "Add your weight and age category, so that we can personalize the water quantity per day. Also select the cup quantity",
                         style: TextStyle(color: Colors.white),
                       ),
                     )
@@ -127,9 +128,10 @@ class _WaterState extends State<Water> {
     );
   }
 
-  void showTutorial() {
-    bool isValid = newUserData.body_weight > 0 ? false : true;
-    if (isValid) {
+  void showTutorial() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    var intro = preferences.getBool('homeintro') ?? false;
+    if (!intro) {
       tutorialCoachMark = TutorialCoachMark(context,
           targets: targets,
           colorShadow: Colors.red,
@@ -144,6 +146,7 @@ class _WaterState extends State<Water> {
       })
         ..show();
     }
+    await preferences.setBool('homeintro', true);
   }
 
   void _afterLayout(_) {

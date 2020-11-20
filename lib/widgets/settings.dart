@@ -1,6 +1,7 @@
 import 'package:Water/models/userdata.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tutorial_coach_mark/animated_focus_light.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
@@ -371,9 +372,10 @@ class _SettingsState extends State<Settings> {
     );
   }
 
-  void showTutorial() {
-    bool isValid = newUserData.body_weight > 0 ? false : true;
-    if (isValid) {
+  void showTutorial() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    var intro = preferences.getBool('settingsintro') ?? false;
+    if (!intro) {
       tutorialCoachMark = TutorialCoachMark(context,
           targets: targets,
           colorShadow: Colors.red,
@@ -388,6 +390,7 @@ class _SettingsState extends State<Settings> {
       })
         ..show();
     }
+    await preferences.setBool('settingsintro', true);
   }
 
   void _afterLayout(_) {
