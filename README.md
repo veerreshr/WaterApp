@@ -1,30 +1,37 @@
-# Water
 
-A new Flutter project , it remainds you of drinking water according to your body with few added functionalities. It uses no internet connection to work.
-Click [here](https://drive.google.com/file/d/1v7EWu86ahrXeBPe9mCxYn6sB9GB0z7Eu/view?usp=sharing) to download the app.
+# Water App
 
-# App Clip
-
-![ezgif com-optimize](https://user-images.githubusercontent.com/59141533/84799216-95ac7600-b019-11ea-976e-5cebffa1f065.gif)
-
-# Screenshots
-
-![home](https://user-images.githubusercontent.com/59141533/84300282-b5eab980-ab6f-11ea-8213-9733c7bf5f0b.jpeg)
-![remainders](https://user-images.githubusercontent.com/59141533/84300287-b7b47d00-ab6f-11ea-8547-ca6d1e2a2a4f.jpeg)
-![settings](https://user-images.githubusercontent.com/59141533/84300288-b84d1380-ab6f-11ea-926f-47ea945385c8.jpeg)
-![splash_screen](https://user-images.githubusercontent.com/59141533/84300291-b8e5aa00-ab6f-11ea-994d-96cd0447958e.jpeg)
-![stats](https://user-images.githubusercontent.com/59141533/84300293-b97e4080-ab6f-11ea-9e18-ea0d68c54389.jpeg)
+The whole idea behind waterApp is to make sure that we never miss out on the basic, and most essential of all -drinking water. The mobile application aims to remind us to drink water at regular intervals throughout the day; thus making sure, we remain hydrated at all times.
 
 
-## Getting Started
+## Demo
 
-This project is a starting point for a Flutter application.
+<img src="https://user-images.githubusercontent.com/59141533/84799216-95ac7600-b019-11ea-976e-5cebffa1f065.gif" height=500/>
+## Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+<div>
+<img src="https://user-images.githubusercontent.com/59141533/84300282-b5eab980-ab6f-11ea-8213-9733c7bf5f0b.jpeg" height=500 alt="home"/>
+<img src="https://user-images.githubusercontent.com/59141533/84300287-b7b47d00-ab6f-11ea-8547-ca6d1e2a2a4f.jpeg" height=500 alt="remainders"/>
+<img src="https://user-images.githubusercontent.com/59141533/84300288-b84d1380-ab6f-11ea-926f-47ea945385c8.jpeg" height=500 alt="settings"/>
+<img src="https://user-images.githubusercontent.com/59141533/84300291-b8e5aa00-ab6f-11ea-994d-96cd0447958e.jpeg" height=500 alt="splash_screen"/>
+<img src="https://user-images.githubusercontent.com/59141533/84300293-b97e4080-ab6f-11ea-9e18-ea0d68c54389.jpeg" height=500 alt="stats"/>
+</div>
+  
+## Features
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Remainders to drink water
+- Weekly and Monthly stats
+- Variable water consumption quantity
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+  
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+  
+## Support
+
+For support, email veerreshr@gmail.com .
+
+  
